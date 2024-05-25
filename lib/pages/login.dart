@@ -1,15 +1,9 @@
-import 'dart:ffi';
-import 'dart:ui';
-import 'package:exchange_app_admin/pages/dashbord.dart';
-import 'package:exchange_app_admin/pages/forget_password.dart';
-import 'package:exchange_app_admin/pages/sign_up.dart';
 import 'package:exchange_app_admin/services/auth_service.dart';
 import 'package:exchange_app_admin/utils/appvalidator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({super.key});
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -50,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFEBF5FF),
+      backgroundColor: const Color(0xFFEBF5FF),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Form(
@@ -58,11 +52,11 @@ class _LoginScreenState extends State<LoginScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
-                SizedBox(height: 16),
-                Text(
+                const SizedBox(height: 16),
+                const Text(
                   'Login Account',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -71,7 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 TextFormField(
@@ -80,27 +74,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: _buildInputDecoration('Email', Icons.email),
                     validator: appValidator.validateEmail),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 TextFormField(
                     controller: _passwordController,
                     keyboardType: TextInputType.phone,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     decoration: _buildInputDecoration('Pssword', Icons.lock),
                     validator: appValidator.validatePassword),
-                SizedBox(height: 20),
-                Row(
-                  children: [
-                    TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ForgetPasswordPage()));
-                        },
-                        child: Text('Forget Password?'))
-                  ],
-                ),
-                SizedBox(
+                const SizedBox(height: 20),
+                const SizedBox(
                   height: 10,
                 ),
                 SizedBox(
@@ -110,32 +92,20 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () {
                       isLoader ? print("Loading") : _submitForm();
                     },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF0B59D7),
+                    ),
                     child: isLoader
-                        ? Center(child: CircularProgressIndicator())
-                        : Text(
+                        ? const Center(child: CircularProgressIndicator())
+                        : const Text(
                             'Login',
                             style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF0B59D7),
-                    ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SignUp()),
-                    );
-                  },
-                  child: const Text(
-                    'Create Account',
-                    style: TextStyle(color: Color(0xFF0B59D7), fontSize: 20),
-                  ),
-                )
               ],
             ),
           ),
@@ -148,9 +118,9 @@ class _LoginScreenState extends State<LoginScreen> {
     return InputDecoration(
       fillColor: Colors.white, // Set the fill color to white
       filled: true, // Enable the fillColor to take effect
-      suffixIcon: Icon(suffixIcon, color: Color(0xFF0B59D7)),
+      suffixIcon: Icon(suffixIcon, color: const Color(0xFF0B59D7)),
       labelText: labelText,
-      labelStyle: TextStyle(color: Color.fromARGB(255, 94, 94, 94)),
+      labelStyle: const TextStyle(color: Color.fromARGB(255, 94, 94, 94)),
       // Icon color remains the same
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(15),

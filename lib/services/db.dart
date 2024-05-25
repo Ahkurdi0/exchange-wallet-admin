@@ -83,13 +83,11 @@ class Db {
     });
   }
 
-  Future<List<TransactionModel>> getUserTransactionsForMonth(
+  Future<List<TransactionModel>> getAllTransactions(
       DateTime month, String status,
       [BranchModel? category]) async {
-    final CollectionReference users = firestore.collection('users');
-    Query query = users
-        .doc(currentUser!.uid)
-        .collection('transactions')
+    Query query = firestore
+        .collectionGroup('transactions')
         .where('status', isEqualTo: status)
         .orderBy('createdAt', descending: true);
 

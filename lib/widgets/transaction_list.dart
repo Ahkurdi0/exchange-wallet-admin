@@ -33,7 +33,7 @@ class _TransactionListState extends State<TransactionList> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<TransactionModel>>(
-      future: db.getUserTransactionsForMonth(
+      future: db.getAllTransactions(
           parseMonthYear(widget.monthYear), widget.type, widget.category),
       builder: (BuildContext context,
           AsyncSnapshot<List<TransactionModel>> snapshot) {

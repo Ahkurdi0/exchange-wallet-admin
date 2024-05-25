@@ -8,7 +8,7 @@ class BranchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Branches'),
+        title: const Text('hello world'),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance.collection('wallets').doc('cash').collection('fastpay').snapshots(),

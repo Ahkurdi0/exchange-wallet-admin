@@ -19,7 +19,7 @@ class _NavBarState extends State<NavBar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         boxShadow: [
           // BoxShadow(
@@ -33,28 +33,24 @@ class _NavBarState extends State<NavBar> {
       child: SalomonBottomBar(
         currentIndex: widget.selectedIndex,
         onTap: (index) => widget.onDestinationSelected(index),
-        margin: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-        itemPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        itemPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         unselectedItemColor: Colors.grey[600],
         items: [
+
           SalomonBottomBarItem(
-            icon: Icon(Icons.swap_horiz),
-            title: Text("Exchange"),
+            icon: const Icon(Icons.timeline),
+            title: const Text("History"),
             selectedColor: Colors.blueAccent,
           ),
           SalomonBottomBarItem(
-            icon: Icon(Icons.timeline),
-            title: Text("History"),
+            icon: const Icon(Icons.location_on),
+            title: const Text("Branches"),
             selectedColor: Colors.blueAccent,
           ),
           SalomonBottomBarItem(
-            icon: Icon(Icons.location_on),
-            title: Text("Branches"),
-            selectedColor: Colors.blueAccent,
-          ),
-          SalomonBottomBarItem(
-            icon: Icon(Icons.tune),
-            title: Text("Settings"),
+            icon: const Icon(Icons.tune),
+            title: const Text("Settings"),
             selectedColor: Colors.blueAccent,
           ),
         ],

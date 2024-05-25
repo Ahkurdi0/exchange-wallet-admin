@@ -1,5 +1,3 @@
-import 'package:exchange_app_admin/pages/login.dart';
-import 'package:exchange_app_admin/pages/sign_up.dart';
 import 'package:exchange_app_admin/widgets/auth_gate.dart';
 import 'package:flutter/material.dart';
 
