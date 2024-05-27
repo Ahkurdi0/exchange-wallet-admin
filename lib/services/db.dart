@@ -83,9 +83,26 @@ class Db {
     });
   }
 
-  Future<List<TransactionModel>> getAllTransactions(
+  // Future<List<TransactionModel>> getAllTransactions(
+  //     DateTime month, String status,
+  //     [BranchModel? category]) async {
+  //   Query query = firestore
+  //       .collectionGroup('transactions')
+  //       .where('status', isEqualTo: status)
+  //       .orderBy('createdAt', descending: true);
+
+  //   if (category != null && category.branchName != 'All') {
+  //     // get the transactions by from branch
+  //     query = query.where('fromBranchId', isEqualTo: category.uId);
+  //   }
+
+  //   final QuerySnapshot snapshot = await query.get();
+  //   return snapshot.docs.map((doc) => TransactionModel.fromSnap(doc)).toList();
+  // }
+
+  Stream<List<TransactionModel>> getAllTransactions(
       DateTime month, String status,
-      [BranchModel? category]) async {
+      [BranchModel? category]) {
     Query query = firestore
         .collectionGroup('transactions')
         .where('status', isEqualTo: status)
@@ -96,8 +113,11 @@ class Db {
       query = query.where('fromBranchId', isEqualTo: category.uId);
     }
 
-    final QuerySnapshot snapshot = await query.get();
-    return snapshot.docs.map((doc) => TransactionModel.fromSnap(doc)).toList();
+    return query.snapshots().map((snapshot) {
+      return snapshot.docs
+          .map((doc) => TransactionModel.fromSnap(doc))
+          .toList();
+    });
   }
 
   Future<UserModel?> getCurrentUserData() async {
@@ -111,5 +131,16 @@ class Db {
       print('User document does not exist');
       return null;
     }
+  }
+
+  Future<void> updateTransactionStatus(
+      TransactionModel transactionModel) async {
+    final DocumentReference transactionRef = firestore
+        .collection('users')
+        .doc(transactionModel.user?.uId)
+        .collection('transactions')
+        .doc(transactionModel.uId);
+
+    return transactionRef.update(transactionModel.toMap());
   }
 }

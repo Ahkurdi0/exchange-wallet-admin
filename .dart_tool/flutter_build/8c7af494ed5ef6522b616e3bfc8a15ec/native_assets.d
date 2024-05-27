@@ -1,0 +1,1 @@
+ /home/k4rwan/exchange-wallet-admin/.dart_tool/flutter_build/8c7af494ed5ef6522b616e3bfc8a15ec/native_assets.yaml: 

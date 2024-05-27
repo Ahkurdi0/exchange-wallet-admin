@@ -43,7 +43,7 @@ class RecentTransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<List<TransactionModel>>(
-      stream: db.getAllTransactions(DateTime.now(), 'completed').asStream(),
+      stream: db.getAllTransactions(DateTime.now(), 'completed'),
       builder: (BuildContext context,
           AsyncSnapshot<List<TransactionModel>> snapshot) {
         if (snapshot.hasError) {

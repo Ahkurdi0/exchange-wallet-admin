@@ -1,7 +1,7 @@
-#Sat May 25 16:25:53 AST 2024
-base.0=C\:\\Users\\Ahmad\\OneDrive\\Desktop\\exchange_app_admin\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-base.1=C\:\\Users\\Ahmad\\OneDrive\\Desktop\\exchange_app_admin\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes2.dex
-base.2=C\:\\Users\\Ahmad\\OneDrive\\Desktop\\exchange_app_admin\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes3.dex
+#Sat May 25 23:31:46 AST 2024
+base.0=/home/k4rwan/exchange-wallet-admin/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+base.1=/home/k4rwan/exchange-wallet-admin/build/app/intermediates/dex/debug/mergeDexDebug/classes2.dex
+base.2=/home/k4rwan/exchange-wallet-admin/build/app/intermediates/dex/debug/mergeDexDebug/classes3.dex
 path.0=classes.dex
 path.1=classes2.dex
 path.2=classes3.dex

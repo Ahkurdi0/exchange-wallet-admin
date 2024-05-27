@@ -1,3 +1,4 @@
+import 'package:exchange_app_admin/services/local_notification_service.dart';
 import 'package:exchange_app_admin/widgets/auth_gate.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,10 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  LocalPushNotificationService localNotificationService =
+      LocalPushNotificationService();
+  await localNotificationService.init();
   runApp(const MyApp());
 }
 
