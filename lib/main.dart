@@ -11,9 +11,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  LocalPushNotificationService localNotificationService =
-      LocalPushNotificationService();
-  await localNotificationService.init();
+  await LocalPushNotificationService().init();
   runApp(const MyApp());
 }
 

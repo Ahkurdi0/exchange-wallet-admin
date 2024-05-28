@@ -1,4 +1,7 @@
 import 'package:exchange_app_admin/models/BranchModel.dart';
+import 'package:exchange_app_admin/models/NotificationModel.dart';
+import 'package:exchange_app_admin/pages/notification_page.dart';
+import 'package:exchange_app_admin/services/db.dart';
 import 'package:exchange_app_admin/widgets/category_list.dart';
 import 'package:exchange_app_admin/widgets/tab_bar_view.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +16,8 @@ class HistoryTranaction extends StatefulWidget {
 
 class _HistoryTransactionState extends State<HistoryTranaction> {
   BranchModel category = const BranchModel(branchName: 'All');
+
+  Db db = Db();
   String monthYear = '';
 
   @override
@@ -27,6 +32,31 @@ class _HistoryTransactionState extends State<HistoryTranaction> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Exchanges'),
+        actions: <Widget>[
+          StreamBuilder<List<NotificationModel>>(
+            stream: db.getAdminNotifications(), // Replace with your function
+            builder: (BuildContext context,
+                AsyncSnapshot<List<NotificationModel>> snapshot) {
+              return Badge(
+                offset: Offset.zero,
+                label: Text(
+                  snapshot.hasData ? '${snapshot.data!.length}' : '',
+                  style: const TextStyle(color: Colors.white),
+                ),
+                child: IconButton(
+                  icon: const Icon(Icons.notifications),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const NotificationPage()),
+                    );
+                  },
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: Column(
         children: [

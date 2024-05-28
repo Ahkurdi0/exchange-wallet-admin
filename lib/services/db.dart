@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:exchange_app_admin/models/BranchModel.dart';
 import 'package:exchange_app_admin/models/ExchangeRateModel.dart';
+import 'package:exchange_app_admin/models/NotificationModel.dart';
 import 'package:exchange_app_admin/models/TransactionModel.dart';
 import 'package:exchange_app_admin/models/UserModel.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -142,5 +143,18 @@ class Db {
         .doc(transactionModel.uId);
 
     return transactionRef.update(transactionModel.toMap());
+  }
+
+  Stream<List<NotificationModel>> getAdminNotifications() {
+    return firestore
+        .collection('users')
+        .doc(currentUser?.uid)
+        .collection('notifications')
+        .snapshots()
+        .map((snapshot) {
+      return snapshot.docs
+          .map((doc) => NotificationModel.fromSnap(doc))
+          .toList();
+    });
   }
 }
